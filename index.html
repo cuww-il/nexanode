@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexaNode — Прошивки, Прокси и Джейлбрейк</title>
     <link rel="icon" type="image/svg+xml" href="logo.svg">
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+    
     <style>
         * {
             box-sizing: border-box;
@@ -20,25 +17,30 @@
             scroll-behavior: smooth;
         }
 
+        /* 🍏 КЛАССИЧЕСКИЙ СВЕТЛЫЙ ФОН (Текстурная подложка iOS 6) */
         body {
-            background-color: #0b0813;
-            background-image: radial-gradient(circle at 50% -20%, #201335 0%, #0b0813 60%);
-            background-attachment: fixed;
-            color: #94a3b8; 
-            font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-            font-weight: 400;
+            background-color: #cbd2da;
+            background-image: 
+                radial-gradient(#e1e7ed 20%, transparent 20%),
+                radial-gradient(#e1e7ed 20%, transparent 20%);
+            background-size: 6px 6px;
+            background-position: 0 0, 3px 3px;
+            color: #222222; 
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
+        /* 📎 ГЛЯНЦЕВАЯ СТЕКЛЯННАЯ ШАПКА С ТЕНЬЮ */
         header {
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 15px 40px;
-            background-color: rgba(11, 8, 19, 0.85); 
-            border-bottom: 1px solid rgba(139, 92, 246, 0.15); 
+            padding: 12px 40px;
+            background: linear-gradient(to bottom, #ffffff 0%, #f1f3f6 50%, #dfe2e7 51%, #e4e8ee 100%);
+            border-bottom: 1px solid #9ba0a6; 
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
             position: sticky; 
             top: 0; 
             z-index: 100; 
@@ -49,9 +51,9 @@
             width: auto; 
             display: block; 
         }
-        .logo-stroke { stroke: #f8fafc; filter: drop-shadow(0 0 4px #8b5cf6); }
-        .logo-bg { fill: #0b0813; }
-        .logo-text { fill: #f8fafc; font-weight: 800; letter-spacing: 1px; }
+        .logo-stroke { stroke: #222222; }
+        .logo-bg { fill: #ffffff; }
+        .logo-text { fill: #222222; font-weight: bold; text-shadow: 0 1px 0 #ffffff; }
 
         nav {
             display: flex;
@@ -59,134 +61,144 @@
         }
 
         nav a { 
-            color: #94a3b8; 
+            color: #555555; 
             text-decoration: none; 
-            font-weight: 600; 
+            font-weight: bold; 
             text-transform: uppercase; 
-            font-size: 0.75rem; 
-            letter-spacing: 1.5px;
-            transition: color 0.2s, text-shadow 0.2s;
+            font-size: 0.8rem; 
+            letter-spacing: 1px;
+            text-shadow: 0 1px 0 #ffffff;
         }
         nav a:hover { 
-            color: #f8fafc; 
-            text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+            color: #007aff; 
         }
 
         .main-hero { 
             text-align: center; 
-            padding: 90px 20px 30px 20px; 
+            padding: 70px 20px 30px 20px; 
             max-width: 800px;
             margin: 0 auto;
         }
         .main-hero h1 { 
-            font-size: 3.5rem; 
-            font-weight: 800; 
-            color: #f8fafc; 
-            margin-bottom: 20px; 
-            letter-spacing: -1px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-size: 3rem; 
+            font-weight: bold; 
+            color: #111111; 
+            margin-bottom: 15px; 
+            text-shadow: 0 1px 0 #ffffff;
         }
         .main-hero p { 
             font-size: 1.2rem; 
-            font-weight: 500; 
-            color: #94a3b8;
-            line-height: 1.6; 
+            line-height: 1.5;
+            color: #444444;
+            text-shadow: 0 1px 0 #ffffff;
         }
 
-        /* 📋 ТАК СЕТКА СТОИТ У АДДЕРЛИ ПО ЦЕНТРУ РЯДОМ */
+        /* СЕТКА ДЛЯ ВЫРАВНИВАНИЯ КАРТОЧЕК В ОДИН РЯД ПО ЦЕНТРУ */
         .features-grid {
             display: flex;
             justify-content: center;
             align-items: stretch;
             gap: 25px; 
             padding: 20px; 
-            max-width: 960px; 
-            margin: 0 auto 80px auto; 
+            max-width: 1000px; 
+            margin: 0 auto 60px auto; 
             width: 100%;
             flex-wrap: wrap;
         }
 
-        /* 📦 КОМПАКТНЫЕ УЗКИЕ КАРТОЧКИ В СТИЛЕ ADDERLY */
+        /* ✨ МАЛЕНЬКИЕ ВЫПУКЛЫЕ КАРТОЧКИ С ЖЁСТКИМИ БЛИКАМИ */
         .card {
-            background-color: #0e0b16; 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
-            border-radius: 24px;
-            padding: 30px 25px; 
+            background: #ffffff;
+            background: linear-gradient(to bottom, 
+                #ffffff 0%, 
+                #f8f9fa 49%, 
+                #eceef1 50%, 
+                #f4f6f9 100%);
+            border: 1px solid #a3aab2; 
+            border-top: 1px solid #d2d7dc;
+            border-radius: 16px;
+            padding: 25px 20px; 
             display: flex; 
             flex-direction: column;
-            width: 280px; /* Компактная фиксированная ширина */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+            width: 260px; /* Уменьшенная ширина, чтобы всё точно вмещалось */
+            height: auto; 
+            min-height: 390px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,1);
+            transition: transform 0.2s ease;
         }
 
         .card:hover { 
-            transform: translateY(-6px); 
-            border-color: rgba(139, 92, 246, 0.4); 
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,1);
         }
 
         .card h3 { 
-            font-size: 1.3rem; 
-            font-weight: 700; 
-            color: #f8fafc; 
+            font-size: 1.25rem; 
+            font-weight: bold; 
+            color: #111111; 
             margin-bottom: 12px; 
-            letter-spacing: -0.5px;
+            text-shadow: 0 1px 0 #ffffff;
         }
         .card p { 
-            color: #94a3b8; 
+            color: #444444; 
             font-size: 0.9rem; 
-            line-height: 1.6; 
+            line-height: 1.5; 
             margin-bottom: 25px; 
+            text-shadow: 0 1px 0 #ffffff;
         }
 
-        /* СТАТУС-БАДЖИ */
+        /* 🟢 / 🟠 ОБЪЁМНЫЕ РЕЛЬЕФНЫЕ БАДЖИ ИЗ iOS */
         .status-badge { 
             display: inline-flex; 
             align-items: center; 
-            background-color: rgba(245, 158, 11, 0.1); 
-            color: #f59e0b; 
-            border: 1px solid rgba(245, 158, 11, 0.2);
+            color: #ffffff; 
             font-size: 0.65rem; 
-            font-weight: 700; 
-            padding: 4px 12px; 
-            border-radius: 100px; 
+            font-weight: bold; 
+            padding: 4px 10px; 
+            border-radius: 12px; 
             margin-bottom: 18px; 
             text-transform: uppercase; 
-            letter-spacing: 0.5px;
             align-self: flex-start; 
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+            border: 1px solid;
         }
-        .status-dot { width: 6px; height: 6px; background-color: #f59e0b; border-radius: 50%; margin-right: 6px; }
+        .status-dot { width: 6px; height: 6px; background-color: #ffffff; border-radius: 50%; margin-right: 6px; box-shadow: 0 1px 0 rgba(0,0,0,0.2); }
         
+        /* Стабильно — Зеленый глянцевый */
         .status-badge.online { 
-            background-color: rgba(16, 185, 129, 0.1); 
-            color: #10b981; 
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            background: linear-gradient(to bottom, #7ceb9c 0%, #4cd964 50%, #2ecc71 100%);
+            border-color: #27ae60;
         }
-        .status-badge.online .status-dot { background-color: #10b981; }
+        
+        /* В разработке — Оранжевый глянцевый */
+        .status-badge.progress { 
+            background: linear-gradient(to bottom, #ffb356 0%, #ff9500 50%, #e67e22 100%);
+            border-color: #d35400;
+        }
 
-        /* СИНИЙ ГРАДИЕНТ ДЛЯ КНОПОК */
+        /* 🔵 ГЛЯНЦЕВАЯ ВЫПУКЛАЯ КНОПКА С ОТБЛИСКОМ */
         .tg-button {
             display: block; 
             text-align: center; 
-            background: linear-gradient(135deg, #007aff 0%, #0051a8 100%);
-            color: #ffffff; 
+            background: linear-gradient(to bottom, #5ac8fa 0%, #34aadc 49%, #007aff 50%, #0051a8 100%);
+            border: 1px solid #004b9b;
+            border-top: 1px solid #96deff;
+            color: #FFFFFF; 
             text-decoration: none;
-            padding: 12px 15px; 
-            border-radius: 14px; 
+            padding: 11px 15px; 
+            border-radius: 10px; 
             font-size: 0.85rem; 
-            font-weight: 700; 
+            font-weight: bold; 
             margin-top: auto; 
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
-            transition: box-shadow 0.2s, transform 0.1s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4);
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.5);
         }
         .tg-button:hover { 
-            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.45);
-        }
-        .tg-button:active {
-            transform: scale(0.98);
+            filter: brightness(1.05);
         }
 
-        /* Меню внутренних ссылок */
+        /* Списки ссылок для блоков в разработке */
         .links-menu {
             display: flex;
             flex-direction: column;
@@ -198,7 +210,7 @@
         .link-item {
             display: flex;
             flex-direction: column;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid #cbd5e1;
             padding-bottom: 10px;
         }
         .link-item:last-child {
@@ -207,38 +219,38 @@
         }
 
         .interactive-link {
-            color: #10b981; 
+            color: #007aff; 
             text-decoration: none;
-            font-weight: 700;
+            font-weight: bold;
             font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        .interactive-link:hover {
-            color: #34d399;
+            text-shadow: 0 1px 0 #ffffff;
         }
 
         .link-desc {
             font-size: 0.75rem;
-            color: #64748b;
+            color: #555555;
             margin-top: 4px;
+            text-shadow: 0 1px 0 #ffffff;
         }
 
         footer {
             margin-top: auto;
             text-align: center;
-            padding: 30px;
-            font-size: 0.85rem;
-            color: #475569;
-            border-top: 1px solid rgba(139, 92, 246, 0.1);
-            background-color: #07050b;
+            padding: 35px 20px;
+            font-size: 0.75rem;
+            color: #555555;
+            border-top: 1px solid #b8bfc7;
+            text-shadow: 0 1px 0 #ffffff;
+            background: linear-gradient(to bottom, #dfe2e7 0%, #cbd2da 100%);
+            line-height: 1.6;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 820px) {
             header { padding: 15px 20px; flex-direction: column; gap: 15px; }
             nav { gap: 15px; }
-            .main-hero h1 { font-size: 2.4rem; }
+            .main-hero h1 { font-size: 2.2rem; }
             .features-grid { flex-direction: column; align-items: center; }
-            .card { width: 100%; max-width: 320px; }
+            .card { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
@@ -249,14 +261,14 @@
             <svg viewBox="0 0 420 100" xmlns="http://w3.org">
               <clipPath id="hexClip"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" /></clipPath>
               <g transform="translate(5, 0)">
-                <circle cx="50" cy="50" r="48" fill="none" stroke="#3730a3" stroke-width="1" stroke-dasharray="4 3" /> 
+                <circle cx="50" cy="50" r="48" fill="none" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3" /> 
                 <g clip-path="url(#hexClip)" fill="none" class="logo-stroke" stroke-width="2.8" stroke-linecap="round">
                     <polygon points="50,0 100,28 100,72 50,100 0,72 0,28" class="logo-bg" stroke="none" />
                     <path d="M15,20 L15,50 A35,35 0 0,0 50,85 L85,85" /><path d="M22,20 L22,50 A28,28 0 0,0 50,78 L85,78" /><path d="M29,20 L29,50 A21,21 0 0,0 50,71 L85,71" /><path d="M36,20 L36,50 A14,14 0 0,0 50,64 L85,64" /><path d="M43,20 L43,50 A7,7 0 0,0 50,57 L85,57" /><path d="M85,80 L85,50 A35,35 0 0,0 50,15 L15,15" /><path d="M78,80 L78,50 A28,28 0 0,0 50,22 L15,22" /><path d="M71,80 L71,50 A21,21 0 0,0 50,29 L15,29" /><path d="M64,80 L64,50 A14,14 0 0,0 50,36 L15,36" /><path d="M57,80 L57,50 A7,7 0 0,0 50,43 L15,43" />
                 </g>
                 <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" class="logo-stroke" stroke-width="5" stroke-linejoin="round" />
               </g>
-              <text x="130" y="64" font-family="'Montserrat', sans-serif" font-size="34" font-weight="800" letter-spacing="4px" class="logo-text">NEXANODE</text>
+              <text x="130" y="64" font-family="'Helvetica Neue', Helvetica, sans-serif" font-size="34" font-weight="bold" letter-spacing="2px" class="logo-text">NEXANODE</text>
             </svg>
         </div>
         <nav>
@@ -269,15 +281,3 @@
     <main>
         <section class="main-hero">
             <h1>Добро пожаловать в NexaNode</h1>
-            <p>Портал о кастомных прошивках, безопасном обходе ограничений, надежных прокси-серверах и полной кастомизации ваших мобильных устройств.</p>
-        </section>
-
-        <!-- 3 КАРТОЧКИ В ОДИН РЯД ПО ЦЕНТРУ -->
-        <section class="features-grid">
-            <!-- КАРТОЧКА ПРОКСИ -->
-            <div class="card" id="proxy">
-                <div class="status-badge online">
-                    <div class="status-dot"></div>Стабильно
-                </div>
-                <h3>Быстрые Прокси</h3>
-                <p>Высокоскоростные приватные HTTP/S и Socks5 конфигурации для обхода ограничений и стабильной работы Telegram.</p>
