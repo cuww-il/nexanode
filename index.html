@@ -4,45 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexaNode — Прошивки, Прокси и Джейлбрейк</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
+        /* 🌌 НАСТРОЙКИ КИБЕРПАНК ТЕМЫ С ПЕРЕЛИВАМИ */
         :root {
-            --bg-color: #F1F5F9;
-            --text-color: #475569;
-            --text-main: #0F172A;
-            --header-bg: rgba(255, 255, 255, 0.75);
-            --card-bg: rgba(255, 255, 255, 0.75);
-            --card-border: rgba(226, 232, 240, 0.8);
-            --svg-stroke: #0F172A;
-            --svg-fill: #FFFFFF;
-            --nav-color: #64748B;
-            --glow-opacity: 0.6;
-            --modal-bg: rgba(255, 255, 255, 0.95);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #0B0F19; 
-                --text-color: #94A3B8;
-                --text-main: #F8FAFC;
-                --header-bg: rgba(15, 23, 42, 0.75);
-                --card-bg: rgba(30, 41, 59, 0.7);
-                --card-border: rgba(255, 255, 255, 0.05);
-                --svg-stroke: #F8FAFC;
-                --svg-fill: #0B0F19;
-                --nav-color: #94A3B8;
-                --glow-opacity: 0.9; 
-                --modal-bg: rgba(30, 41, 59, 0.95);
-            }
+            --bg-color: #070913; 
+            --text-color: #94A3B8;
+            --text-main: #F8FAFC;
+            --header-bg: rgba(11, 15, 25, 0.7);
+            --card-bg: rgba(15, 22, 36, 0.45);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --svg-stroke: #F8FAFC;
+            --svg-fill: #070913;
+            --nav-color: #94A3B8;
+            --glow-opacity: 0.95; 
+            --modal-bg: rgba(15, 22, 36, 0.95);
         }
 
         body {
             background-color: var(--bg-color); 
             color: var(--text-color); 
             font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+            font-weight: 400;
             margin: 0;
             padding: 0;
             position: relative;
@@ -52,15 +39,17 @@
             flex-direction: column; 
         }
 
-        .glow-1, .glow-2 {
-            position: absolute; border-radius: 50%; pointer-events: none; z-index: -1; filter: blur(90px); opacity: var(--glow-opacity);
+        /* 🔥 МОЩНЫЕ НЕОНОВЫЕ ТУМАННОСТИ НА ФОНЕ */
+        .glow-1, .glow-2, .glow-3 {
+            position: absolute; border-radius: 50%; pointer-events: none; z-index: -1; filter: blur(110px); opacity: var(--glow-opacity);
         }
-        .glow-1 { background: radial-gradient(circle, #818CF8 0%, #6366F1 50%, rgba(255,255,255,0) 100%); width: 600px; height: 600px; top: -200px; left: -150px; }
-        .glow-2 { background: radial-gradient(circle, #38BDF8 0%, #0EA5E9 50%, rgba(255,255,255,0) 100%); width: 600px; height: 600px; top: 150px; right: -150px; }
+        .glow-1 { background: radial-gradient(circle, #6366f1 0%, #4f46e5 50%, rgba(0,0,0,0) 100%); width: 650px; height: 650px; top: -250px; left: -150px; }
+        .glow-2 { background: radial-gradient(circle, #06b6d4 0%, #0891b2 50%, rgba(0,0,0,0) 100%); width: 600px; height: 600px; top: 180px; right: -150px; }
+        .glow-3 { background: radial-gradient(circle, #d946ef 0%, rgba(0,0,0,0) 100%); width: 400px; height: 400px; bottom: -50px; left: 25%; }
 
         header {
             display: flex; justify-content: space-between; align-items: center; padding: 10px 40px;
-            background-color: var(--header-bg); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(226, 232, 240, 0.2); 
+            background-color: var(--header-bg); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
             position: sticky; top: 0; z-index: 10;
         }
 
@@ -69,64 +58,99 @@
         .logo-bg { fill: var(--svg-fill); }
         .logo-text { fill: var(--svg-stroke); }
 
-        nav a { color: var(--nav-color); text-decoration: none; margin-left: 25px; font-weight: 500; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; cursor: pointer; }
+        nav a { color: var(--nav-color); text-decoration: none; margin-left: 25px; font-weight: 500; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; cursor: pointer; transition: color 0.2s; }
         nav a:hover { color: var(--text-main); }
-        nav a.creator-nav-btn { color: #818CF8; font-weight: 600; }
+        nav a.creator-nav-btn { color: #818CF8; font-weight: 600; text-shadow: 0 0 10px rgba(129, 140, 248, 0.3); }
 
         .main-hero { text-align: center; padding: 90px 20px 40px 20px; }
-        .main-hero h1 { font-size: 3rem; font-weight: 300; color: var(--text-main); margin-bottom: 15px; }
-        .main-hero p { font-size: 1.15rem; font-weight: 300; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        .main-hero h1 { font-size: 3.2rem; font-weight: 200; color: var(--text-main); margin-bottom: 15px; letter-spacing: -0.5px; text-shadow: 0 2px 20px rgba(255,255,255,0.05); }
+        .main-hero p { font-size: 1.15rem; font-weight: 300; max-width: 600px; margin: 0 auto; line-height: 1.6; color: #94A3B8; }
 
         .features-grid {
-            display: flex; justify-content: center; align-items: stretch; gap: 20px; padding: 40px 20px; max-width: 1300px; margin: 0 auto; flex-wrap: wrap; flex-grow: 1;
+            display: flex; justify-content: center; align-items: stretch; gap: 24px; padding: 40px 20px; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; flex-grow: 1;
         }
 
+        /* 🧊 СТИЛЬ МАТОВОГО НЕОНОВОГО СТЕКЛА ДЛЯ КАРТОЧЕК 🧊 */
         .card {
-            background-color: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--card-border); border-radius: 20px;
-            padding: 25px; width: 260px; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03); display: flex; flex-direction: column;
+            background-color: var(--card-bg); 
+            backdrop-filter: blur(20px) saturate(140%); 
+            border-radius: 24px;
+            padding: 28px; 
+            width: 270px; 
+            /* Неоновый градиент на границе */
+            border: 1px solid transparent;
+            background-image: linear-gradient(rgba(15,22,36,0.9), rgba(15,22,36,0.9)), linear-gradient(135deg, rgba(99,102,241,0.3), rgba(6,182,212,0.3));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255,255,255,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; 
+            flex-direction: column;
         }
-        .card.wide-card { width: 100%; max-width: 920px; }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.25); border-color: rgba(99, 102, 241, 0.4); }
+        .card.wide-card { width: 100%; max-width: 934px; }
+        
+        .card:hover { 
+            transform: translateY(-8px) scale(1.01); 
+            box-shadow: 0 30px 50px -10px rgba(99, 102, 241, 0.15), inset 0 1px 2px rgba(255,255,255,0.1);
+            background-image: linear-gradient(rgba(15,22,36,0.9), rgba(15,22,36,0.9)), linear-gradient(135deg, #6366f1, #06b6d4);
+        }
 
-        .card h3 { font-size: 1.2rem; font-weight: 500; color: var(--text-main); margin-top: 0; margin-bottom: 12px; }
-        .card p { color: var(--text-color); font-size: 0.9rem; line-height: 1.6; font-weight: 300; margin: 0; margin-bottom: 20px; }
+        .card h3 { font-size: 1.25rem; font-weight: 500; color: var(--text-main); margin-top: 0; margin-bottom: 12px; letter-spacing: 0.5px; }
+        .card p { color: var(--text-color); font-size: 0.9rem; line-height: 1.6; font-weight: 300; margin: 0; margin-bottom: 25px; }
 
-        .status-badge { display: inline-flex; align-items: center; background-color: #FEF3C7; color: #D97706; font-size: 0.65rem; font-weight: 500; padding: 4px 10px; border-radius: 20px; margin-bottom: 15px; text-transform: uppercase; align-self: flex-start; }
-        .status-dot { width: 6px; height: 6px; background-color: #D97706; border-radius: 50%; margin-right: 6px; }
-        .status-badge.online { background-color: #DCFCE7; color: #16A34A; }
-        .status-badge.online .status-dot { background-color: #16A34A; }
+        /* СВЕТЯЩИЕСЯ НЕОНОВЫЕ ПЛАШКИ */
+        .status-badge { display: inline-flex; align-items: center; background-color: rgba(217, 119, 6, 0.1); color: #F59E0B; border: 1px solid rgba(217, 119, 6, 0.2); font-size: 0.65rem; font-weight: 500; padding: 4px 12px; border-radius: 20px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; align-self: flex-start; box-shadow: 0 0 15px rgba(217, 119, 6, 0.1); }
+        .status-dot { width: 6px; height: 6px; background-color: #F59E0B; border-radius: 50%; margin-right: 6px; box-shadow: 0 0 8px #F59E0B; }
+        
+        .status-badge.online { background-color: rgba(16, 185, 129, 0.1); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.2); box-shadow: 0 0 15px rgba(16, 185, 129, 0.1); }
+        .status-badge.online .status-dot { background-color: #10B981; box-shadow: 0 0 8px #10B981; }
 
+        /* КИБЕРПАНК КНОПКА ТЕЛЕГРАМА */
         .tg-button {
-            display: block; text-align: center; background-color: #24A1DE; color: #FFFFFF; text-decoration: none;
-            padding: 11px 15px; border-radius: 12px; font-size: 0.85rem; font-weight: 500; margin-top: auto;
+            display: block; text-align: center; background: linear-gradient(135deg, #06b6d4, #3b82f6); color: #FFFFFF; text-decoration: none;
+            padding: 12px 15px; border-radius: 14px; font-size: 0.85rem; font-weight: 500; margin-top: auto; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2); transition: all 0.2s;
         }
+        .tg-button:hover { background: linear-gradient(135deg, #3b82f6, #06b6d4); box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4); transform: translateY(-1px); }
 
-        .links-menu { display: flex; flex-direction: column; gap: 12px; margin-top: auto; text-align: left; }
-        .interactive-link { color: #10B981; text-decoration: none; font-weight: 500; font-size: 0.95rem; display: inline-block; }
-        @media (prefers-color-scheme: dark) { .interactive-link { color: #38BDF8; } }
-        .link-desc { font-size: 0.8rem; color: var(--text-color); margin-top: 2px; font-weight: 300; }
+        /* ИНТЕРАКТИВНОЕ МЕНЮ ССЫЛОК */
+        .links-menu { display: flex; flex-direction: column; gap: 14px; margin-top: auto; text-align: left; }
+        .interactive-link { color: #06b6d4; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s, padding-left 0.2s; display: inline-block; }
+        .interactive-link:hover { color: #22d3ee; padding-left: 6px; }
+        .link-desc { font-size: 0.8rem; color: var(--text-color); margin-top: 3px; font-weight: 300; }
 
+        /* КИБЕР-МОДАЛЬНОЕ ОКНО */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(3, 5, 11, 0.6); backdrop-filter: blur(10px);
             display: flex; justify-content: center; align-items: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-window { background-color: var(--modal-bg); border: 1px solid var(--card-border); padding: 40px; border-radius: 24px; width: 90%; max-width: 450px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); text-align: center; position: relative; line-height: 1.8; font-weight: 300; }
-        .modal-window strong { color: #818CF8; font-weight: 500; }
-        .close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 1.5rem; color: var(--text-color); cursor: pointer; }
+        .modal-window { 
+            background-color: var(--modal-bg); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            padding: 40px; border-radius: 28px; width: 90%; max-width: 440px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.05); 
+            text-align: center; position: relative; line-height: 1.9; font-weight: 300; 
+        }
+        .modal-window h3 { color: var(--text-main); font-weight: 400; letter-spacing: 1px; }
+        .modal-window strong { color: #818CF8; font-weight: 500; text-shadow: 0 0 10px rgba(129, 140, 248, 0.2); }
+        .close-btn { position: absolute; top: 18px; right: 22px; background: none; border: none; font-size: 1.6rem; color: var(--text-color); cursor: pointer; transition: color 0.2s; }
+        .close-btn:hover { color: var(--text-main); }
     </style>
 </head>
 <body>
 
+    <!-- Включаем яркие кибер-сферы -->
     <div class="glow-1"></div>
     <div class="glow-2"></div>
+    <div class="glow-3"></div>
 
     <header>
         <div class="logo-box">
             <svg viewBox="0 0 420 100" xmlns="http://w3.org">
               <clipPath id="hexClip"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" /></clipPath>
               <g transform="translate(5, 0)">
-                <circle cx="50" cy="50" r="48" fill="none" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3" /> 
+                <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 3" /> 
                 <g clip-path="url(#hexClip)" fill="none" class="logo-stroke" stroke-width="2.8" stroke-linecap="round">
                     <polygon points="50,0 100,28 100,72 50,100 0,72 0,28" class="logo-bg" stroke="none" />
                     <path d="M15,20 L15,50 A35,35 0 0,0 50,85 L85,85" />
@@ -140,42 +164,3 @@
                     <path d="M64,80 L64,50 A14,14 0 0,0 50,36 L15,36" />
                     <path d="M57,80 L57,50 A7,7 0 0,0 50,43 L15,43" />
                 </g>
-                <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" class="logo-stroke" stroke-width="5" stroke-linejoin="round" />
-              </g>
-              <text x="130" y="64" font-family="'Montserrat', sans-serif" font-size="36" font-weight="400" letter-spacing="4px" class="logo-text">NEXANODE</text>
-            </svg>
-        </div>
-        <nav>
-            <a href="#proxy">Прокси</a>
-            <a href="#cydia">iOS & Cydia</a>
-            <a href="#android">Android</a>
-            <a id="openModalBtn" class="creator-nav-btn">Креаторы</a>
-        </nav>
-    </header>
-
-    <main class="main-hero">
-        <h1>Добро пожаловать в NexaNode</h1>
-        <p>Портал о прошивках, обходе ограничений, прокси-серверах и кастомизации мобильных устройств.</p>
-    </main>
-
-    <section class="features-grid">
-        <div class="card" id="proxy">
-            <div class="status-badge online"><span class="status-dot"></span>Работает</div>
-            <h3>Быстрые Прокси</h3>
-            <p>Подключай приватные MTProto-прокси для Telegram в один клик прямо с нашего сайта.</p>
-            <a href="tg://proxy?server=s013.dimasssss.space&port=443&secret=eebed92191281b6d7a676b052f2797cad9646e732d73686f702e7275" class="tg-button">Подключить прокси</a>
-        </div>
-
-        <div class="card" id="cydia">
-            <h3>iOS & Cydia</h3>
-            <p>Инструкции по установке джейлбрейка, кастомизации интерфейса iPhone и альтернативных магазинов.</p>
-        </div>
-
-        <div class="card" id="android">
-            <div class="status-badge"><span class="status-dot"></span>В разработке</div>
-            <h3>Прошивки Android</h3>
-            <p>База чистых официальных и кастомных прошивок (Pixel Experience, LineageOS). Инструкции по разблокировке загрузчиков.</p>
-        </div>
-
-        <div class="card wide-card" id="windows">
-            <h3>Софт для Windows</h3>
