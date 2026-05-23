@@ -7,44 +7,38 @@
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Переменные для темной темы по умолчанию в стиле Liquid Glass */
-            --bg-color: #060913; 
+            /* Темная тема по умолчанию — имитация жидкого стекла через CSS Градиент */
+            --bg-color: #060913;
+            /* Плавный фон-подложка вместо тяжелых движущихся сфер */
+            --bg-gradient: radial-gradient(circle at 0% 0%, #1e1b4b 0%, #060913 50%), 
+                           radial-gradient(circle at 100% 100%, #0c4a6e 0%, #060913 100%);
             --text-color: #94A3B8;
             --text-main: #F8FAFC;
-            --header-bg: rgba(10, 15, 30, 0.5);
-            --card-bg: rgba(15, 23, 42, 0.45);
+            --header-bg: rgba(15, 23, 42, 0.8);
+            --card-bg: rgba(30, 41, 59, 0.5);
             --card-border: rgba(255, 255, 255, 0.08);
-            --card-inner-glow: rgba(255, 255, 255, 0.03);
             --svg-stroke: #F8FAFC;
             --svg-fill: #060913;
             --nav-color: #94A3B8;
-            
-            /* Цвета жидкого стекла */
-            --sphere-1: rgba(99, 102, 241, 0.6);
-            --sphere-2: rgba(14, 165, 233, 0.5);
-            --sphere-3: rgba(236, 72, 153, 0.4);
         }
 
         @media (prefers-color-scheme: light) {
             :root {
-                --bg-color: #F4F7FA; 
+                --bg-color: #F4F7FA;
+                --bg-gradient: radial-gradient(circle at 0% 0%, #e0e7ff 0%, #F4F7FA 60%), 
+                               radial-gradient(circle at 100% 100%, #e0f2fe 0%, #F4F7FA 100%);
                 --text-color: #475569;
                 --text-main: #0F172A;
-                --header-bg: rgba(244, 247, 250, 0.5);
-                --card-bg: rgba(255, 255, 255, 0.4);
-                --card-border: rgba(255, 255, 255, 0.6);
-                --card-inner-glow: rgba(255, 255, 255, 0.4);
+                --header-bg: rgba(255, 255, 255, 0.85);
+                --card-bg: rgba(255, 255, 255, 0.6);
+                --card-border: rgba(226, 232, 240, 0.9);
                 --svg-stroke: #0F172A;
-                --svg-fill: #F4F7FA;
+                --svg-fill: #FFFFFF;
                 --nav-color: #64748B;
-                
-                --sphere-1: rgba(129, 140, 248, 0.4);
-                --sphere-2: rgba(56, 189, 248, 0.4);
-                --sphere-3: rgba(244, 114, 182, 0.3);
             }
         }
 
@@ -59,94 +53,27 @@
         }
 
         body {
-            background-color: var(--bg-color); 
+            background: var(--bg-gradient);
+            background-color: var(--bg-color);
+            background-attachment: fixed;
             color: var(--text-color); 
             font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
             font-weight: 400;
-            position: relative;
-            overflow-x: hidden;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            transition: background-color 0.5s ease; 
         }
 
-        /* --- ЭФФЕКТ ЖИДКОГО СТЕКЛА НА ФОНЕ (Liquid Сферы) --- */
-        .liquid-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .liquid-sphere {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            mix-blend-mode: screen;
-            animation: float-around 20s infinite alternate ease-in-out;
-        }
-
-        @media (prefers-color-scheme: light) {
-            .liquid-sphere {
-                mix-blend-mode: multiply;
-                filter: blur(120px);
-            }
-        }
-
-        .sphere-1 {
-            background: var(--sphere-1);
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            left: -100px;
-            animation-duration: 25s;
-        }
-
-        .sphere-2 {
-            background: var(--sphere-2);
-            width: 550px;
-            height: 550px;
-            top: 15%;
-            right: -150px;
-            animation-duration: 18s;
-            animation-delay: -5s;
-        }
-
-        .sphere-3 {
-            background: var(--sphere-3);
-            width: 500px;
-            height: 500px;
-            bottom: -100px;
-            left: 20%;
-            animation-duration: 22s;
-            animation-delay: -2s;
-        }
-
-        @keyframes float-around {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(80px, 60px) scale(1.1) rotate(180deg); }
-            100% { transform: translate(-40px, 120px) scale(0.9) rotate(360deg); }
-        }
-
-        /* --- ШАПКА САЙТА --- */
         header {
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             padding: 15px 40px;
             background-color: var(--header-bg); 
-            backdrop-filter: blur(24px) saturate(180%); 
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
             border-bottom: 1px solid var(--card-border); 
             position: sticky; 
             top: 0; 
             z-index: 100; 
-            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .logo-box svg { 
@@ -154,9 +81,9 @@
             width: auto; 
             display: block; 
         }
-        .logo-stroke { stroke: var(--svg-stroke); transition: stroke 0.3s; }
-        .logo-bg { fill: var(--svg-fill); transition: fill 0.3s; }
-        .logo-text { fill: var(--svg-stroke); font-weight: 700; transition: fill 0.3s; }
+        .logo-stroke { stroke: var(--svg-stroke); }
+        .logo-bg { fill: var(--svg-fill); }
+        .logo-text { fill: var(--svg-stroke); font-weight: 700; }
 
         nav {
             display: flex;
@@ -170,136 +97,188 @@
             text-transform: uppercase; 
             font-size: 0.75rem; 
             letter-spacing: 1.5px;
-            transition: color 0.2s, transform 0.2s;
+            transition: color 0.2s;
         }
         nav a:hover { 
             color: var(--text-main); 
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
-        /* --- ГЕРОЙ-СЕКЦИЯ --- */
         .main-hero { 
             text-align: center; 
-            padding: 100px 20px 50px 20px; 
-            max-width: 850px;
+            padding: 90px 20px 40px 20px; 
+            max-width: 800px;
             margin: 0 auto;
         }
         .main-hero h1 { 
-            font-size: 3.5rem; 
-            font-weight: 800; 
-            letter-spacing: -1.5px;
+            font-size: 3.2rem; 
+            font-weight: 700; 
             color: var(--text-main); 
             margin-bottom: 20px; 
-            line-height: 1.1;
-            background: linear-gradient(135deg, var(--text-main) 40%, #818CF8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
         .main-hero p { 
-            font-size: 1.25rem; 
+            font-size: 1.2rem; 
             font-weight: 400; 
-            color: var(--text-color);
             line-height: 1.6; 
         }
 
-        /* --- СЕТКА КАРТОЧЕК (ЖИДКОЕ СТЕКЛО) --- */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 28px; 
-            padding: 20px 20px 100px 20px; 
-            max-width: 1140px; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px; 
+            padding: 20px 20px 80px 20px; 
+            max-width: 1100px; 
             margin: 0 auto; 
             width: 100%;
         }
 
+        /* Облегченный стеклянный эффект за счет полупрозрачного цвета без размытия */
         .card {
             background-color: var(--card-bg); 
-            backdrop-filter: blur(30px) saturate(200%); 
-            -webkit-backdrop-filter: blur(30px) saturate(200%);
             border: 1px solid var(--card-border); 
-            box-shadow: inset 0 1px 1px var(--card-inner-glow), 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-            border-radius: 28px;
-            padding: 35px; 
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s, border-color 0.4s;
+            border-radius: 24px;
+            padding: 30px; 
+            transition: transform 0.2s ease, border-color 0.2s ease;
             display: flex; 
             flex-direction: column;
         }
 
         .card:hover { 
-            transform: translateY(-8px) scale(1.01); 
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: inset 0 1px 4px rgba(255,255,255,0.15), 0 24px 48px -12px rgba(0, 0, 0, 0.4);
+            transform: translateY(-4px); 
+            border-color: rgba(99, 102, 241, 0.4); 
         }
 
         .card h3 { 
-            font-size: 1.45rem; 
-            font-weight: 700; 
+            font-size: 1.4rem; 
+            font-weight: 600; 
             color: var(--text-main); 
             margin-bottom: 12px; 
-            letter-spacing: -0.5px;
         }
         .card p { 
             color: var(--text-color); 
             font-size: 0.95rem; 
             line-height: 1.6; 
-            margin-bottom: 30px; 
+            margin-bottom: 25px; 
         }
 
-        /* Индикаторы статуса */
         .status-badge { 
             display: inline-flex; 
             align-items: center; 
-            background: rgba(245, 158, 11, 0.1); 
-            backdrop-filter: blur(5px);
-            color: #F59E0B; 
-            border: 1px solid rgba(245, 158, 11, 0.2);
+            background-color: rgba(245, 158, 11, 0.1); 
+            color: #D97706; 
             font-size: 0.7rem; 
-            font-weight: 700; 
-            padding: 6px 14px; 
-            border-radius: 100px; 
-            margin-bottom: 20px; 
+            font-weight: 600; 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            margin-bottom: 15px; 
             text-transform: uppercase; 
-            letter-spacing: 0.5px;
             align-self: flex-start; 
         }
-        .status-dot { width: 6px; height: 6px; background-color: #F59E0B; border-radius: 50%; margin-right: 6px; }
+        .status-dot { width: 6px; height: 6px; background-color: #D97706; border-radius: 50%; margin-right: 6px; }
         
-        .status-badge.online { 
-            background: rgba(16, 185, 129, 0.1); 
-            color: #10B981; 
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
+        .status-badge.online { background-color: rgba(16, 185, 129, 0.1); color: #10B981; }
         .status-badge.online .status-dot { background-color: #10B981; }
 
-        /* Кнопка в Telegram */
         .tg-button {
             display: block; 
             text-align: center; 
-            background: linear-gradient(135deg, #24A1DE 0%, #007bb6 100%); 
+            background: linear-gradient(135deg, #24A1DE 0%, #1a84b8 100%);
             color: #FFFFFF; 
             text-decoration: none;
-            padding: 14px 20px; 
-            border-radius: 16px; 
-            font-size: 0.9rem; 
-            font-weight: 700; 
+            padding: 12px 15px; 
+            border-radius: 14px; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
             margin-top: auto; 
-            box-shadow: 0 4px 15px rgba(36, 161, 222, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+            transition: opacity 0.2s;
         }
-        .tg-button:hover { 
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(36, 161, 222, 0.4);
-        }
-        .tg-button:active { transform: scale(0.97); }
+        .tg-button:hover { opacity: 0.9; }
 
-        /* Интерактивные списки */
         .links-menu {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
             margin-top: auto;
             text-align: left;
         }
 
         .link-item {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 10px;
+        }
+        .link-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .interactive-link {
+            color: #10B981; 
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s, padding-left 0.2s;
+        }
+
+        .interactive-link:hover {
+            color: #059669;
+            padding-left: 4px; 
+        }
+
+        .link-desc {
+            font-size: 0.8rem;
+            color: var(--text-color);
+            margin-top: 4px;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.85rem;
+            color: var(--nav-color);
+            border-top: 1px solid var(--card-border);
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            nav { gap: 15px; }
+            .main-hero h1 { font-size: 2.2rem; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-box">
+            <svg viewBox="0 0 420 100" xmlns="http://w3.org">
+              <clipPath id="hexClip"><polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" /></clipPath>
+              <g transform="translate(5, 0)">
+                <circle cx="50" cy="50" r="48" fill="none" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="4 3" /> 
+                <g clip-path="url(#hexClip)" fill="none" class="logo-stroke" stroke-width="2.8" stroke-linecap="round">
+                    <polygon points="50,0 100,28 100,72 50,100 0,72 0,28" class="logo-bg" stroke="none" />
+                    <path d="M15,20 L15,50 A35,35 0 0,0 50,85 L85,85" /><path d="M22,20 L22,50 A28,28 0 0,0 50,78 L85,78" /><path d="M29,20 L29,50 A21,21 0 0,0 50,71 L85,71" /><path d="M36,20 L36,50 A14,14 0 0,0 50,64 L85,64" /><path d="M43,20 L43,50 A7,7 0 0,0 50,57 L85,57" /><path d="M85,80 L85,50 A35,35 0 0,0 50,15 L15,15" /><path d="M78,80 L78,50 A28,28 0 0,0 50,22 L15,22" /><path d="M71,80 L71,50 A21,21 0 0,0 50,29 L15,29" /><path d="M64,80 L64,50 A14,14 0 0,0 50,36 L15,36" /><path d="M57,80 L57,50 A7,7 0 0,0 50,43 L15,43" />
+                </g>
+                <polygon points="50,6 88.1,28 88.1,72 50,94 11.9,72 11.9,28" fill="none" class="logo-stroke" stroke-width="5" stroke-linejoin="round" />
+              </g>
+              <text x="130" y="64" font-family="'Montserrat', sans-serif" font-size="34" font-weight="700" letter-spacing="4px" class="logo-text">NEXANODE</text>
+            </svg>
+        </div>
+        <nav>
+            <a href="#proxy">Прокси</a>
+            <a href="#cydia">iOS & Cydia</a>
+            <a href="#android">Android</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="main-hero">
+            <h1>Добро пожаловать в NexaNode</h1>
+            <p>Портал о кастомных прошивках, безопасном обходе ограничений, надежных прокси-серверах и полной кастомизации ваших мобильных устройств.</p>
+        </section>
+
+        <section class="features-grid">
+            <!-- СЕКЦИЯ ПРОКСИ -->
+            <div class="card" id="proxy">
