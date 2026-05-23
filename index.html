@@ -20,7 +20,6 @@
             scroll-behavior: smooth;
         }
 
-        /* 🌌 КОСМИЧЕСКИЙ ЧЕРНИЧНО-ФИОЛЕТОВЫЙ ФОН ИЗ ADDERLY.TOP */
         body {
             background-color: #0b0813;
             background-image: radial-gradient(circle at 50% -20%, #201335 0%, #0b0813 60%);
@@ -33,7 +32,6 @@
             flex-direction: column;
         }
 
-        /* 📎 ТЕМНАЯ ШАПКА С ФИОЛЕТОВЫМ ТИСПЛЕСКОМ */
         header {
             display: flex; 
             justify-content: space-between; 
@@ -74,10 +72,9 @@
             text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
         }
 
-        /* ⚡ ЦЕНТРАЛЬНЫЙ ЗАГОВОЛОК И ТЕКСТ */
         .main-hero { 
             text-align: center; 
-            padding: 90px 20px 40px 20px; 
+            padding: 90px 20px 30px 20px; 
             max-width: 800px;
             margin: 0 auto;
         }
@@ -96,27 +93,28 @@
             line-height: 1.6; 
         }
 
+        /* 📋 ТАК СЕТКА СТОИТ У АДДЕРЛИ ПО ЦЕНТРУ РЯДОМ */
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; 
-            padding: 20px 20px 80px 20px; 
-            max-width: 1100px; 
-            margin: 0 auto; 
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 25px; 
+            padding: 20px; 
+            max-width: 960px; 
+            margin: 0 auto 80px auto; 
             width: 100%;
-            align-items: start;
+            flex-wrap: wrap;
         }
 
-        /* 📦 ПЛОТНЫЕ ТЕМНЫЕ КАРТОЧКИ С НЕОНОВЫМ КОНТУРОМ ПРИ НАВЕДЕНИИ */
+        /* 📦 КОМПАКТНЫЕ УЗКИЕ КАРТОЧКИ В СТИЛЕ ADDERLY */
         .card {
             background-color: #0e0b16; 
             border: 1px solid rgba(255, 255, 255, 0.05); 
             border-radius: 24px;
-            padding: 35px; 
+            padding: 30px 25px; 
             display: flex; 
             flex-direction: column;
-            height: auto; 
-            min-height: 390px; 
+            width: 280px; /* Компактная фиксированная ширина */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
         }
@@ -128,7 +126,7 @@
         }
 
         .card h3 { 
-            font-size: 1.5rem; 
+            font-size: 1.3rem; 
             font-weight: 700; 
             color: #f8fafc; 
             margin-bottom: 12px; 
@@ -136,53 +134,50 @@
         }
         .card p { 
             color: #94a3b8; 
-            font-size: 0.95rem; 
+            font-size: 0.9rem; 
             line-height: 1.6; 
             margin-bottom: 25px; 
         }
 
-        /* 🟢 / 🟠 НЕОНОВЫЕ СТАТУС-БАДЖИ */
+        /* СТАТУС-БАДЖИ */
         .status-badge { 
             display: inline-flex; 
             align-items: center; 
             background-color: rgba(245, 158, 11, 0.1); 
             color: #f59e0b; 
             border: 1px solid rgba(245, 158, 11, 0.2);
-            font-size: 0.7rem; 
+            font-size: 0.65rem; 
             font-weight: 700; 
-            padding: 5px 14px; 
+            padding: 4px 12px; 
             border-radius: 100px; 
             margin-bottom: 18px; 
             text-transform: uppercase; 
             letter-spacing: 0.5px;
             align-self: flex-start; 
-            box-shadow: 0 0 10px rgba(245, 158, 11, 0.05);
         }
-        .status-dot { width: 6px; height: 6px; background-color: #f59e0b; border-radius: 50%; margin-right: 6px; box-shadow: 0 0 6px #f59e0b; }
+        .status-dot { width: 6px; height: 6px; background-color: #f59e0b; border-radius: 50%; margin-right: 6px; }
         
-        /* Зеленый статус для Прокси */
         .status-badge.online { 
             background-color: rgba(16, 185, 129, 0.1); 
             color: #10b981; 
             border: 1px solid rgba(16, 185, 129, 0.2);
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.05);
         }
-        .status-badge.online .status-dot { background-color: #10b981; box-shadow: 0 0 6px #10b981; }
+        .status-badge.online .status-dot { background-color: #10b981; }
 
-        /* 🔵 ЯРКАЯ КНОПКА С ФИРМЕННЫМ ГРАДИЕНТОМ ИЗ ADDERLY */
+        /* СИНИЙ ГРАДИЕНТ ДЛЯ КНОПОК */
         .tg-button {
             display: block; 
             text-align: center; 
             background: linear-gradient(135deg, #007aff 0%, #0051a8 100%);
             color: #ffffff; 
             text-decoration: none;
-            padding: 14px 20px; 
+            padding: 12px 15px; 
             border-radius: 14px; 
-            font-size: 0.9rem; 
+            font-size: 0.85rem; 
             font-weight: 700; 
             margin-top: auto; 
             box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
-            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            transition: box-shadow 0.2s, transform 0.1s;
         }
         .tg-button:hover { 
             box-shadow: 0 6px 20px rgba(0, 122, 255, 0.45);
@@ -191,11 +186,11 @@
             transform: scale(0.98);
         }
 
-        /* Интерактивные ссылки */
+        /* Меню внутренних ссылок */
         .links-menu {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             margin-top: auto; 
             text-align: left;
         }
@@ -204,7 +199,7 @@
             display: flex;
             flex-direction: column;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 12px;
+            padding-bottom: 10px;
         }
         .link-item:last-child {
             border-bottom: none;
@@ -215,17 +210,15 @@
             color: #10b981; 
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.95rem;
-            transition: color 0.2s, text-shadow 0.2s;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
-
         .interactive-link:hover {
             color: #34d399;
-            text-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
         }
 
         .link-desc {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #64748b;
             margin-top: 4px;
         }
@@ -244,7 +237,8 @@
             header { padding: 15px 20px; flex-direction: column; gap: 15px; }
             nav { gap: 15px; }
             .main-hero h1 { font-size: 2.4rem; }
-            .features-grid { grid-template-columns: 1fr; }
+            .features-grid { flex-direction: column; align-items: center; }
+            .card { width: 100%; max-width: 320px; }
         }
     </style>
 </head>
@@ -278,5 +272,12 @@
             <p>Портал о кастомных прошивках, безопасном обходе ограничений, надежных прокси-серверах и полной кастомизации ваших мобильных устройств.</p>
         </section>
 
+        <!-- 3 КАРТОЧКИ В ОДИН РЯД ПО ЦЕНТРУ -->
         <section class="features-grid">
             <!-- КАРТОЧКА ПРОКСИ -->
+            <div class="card" id="proxy">
+                <div class="status-badge online">
+                    <div class="status-dot"></div>Стабильно
+                </div>
+                <h3>Быстрые Прокси</h3>
+                <p>Высокоскоростные приватные HTTP/S и Socks5 конфигурации для обхода ограничений и стабильной работы Telegram.</p>
