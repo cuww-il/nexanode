@@ -10,35 +10,6 @@
     <link href="https://googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            /* Переменные для темной темы по умолчанию */
-            --bg-color: #0B0F19; 
-            --text-color: #94A3B8;
-            --text-main: #F8FAFC;
-            --header-bg: #111827;
-            --card-bg: #1F2937;
-            --card-border: #374151;
-            --svg-stroke: #F8FAFC;
-            --svg-fill: #0B0F19;
-            --nav-color: #94A3B8;
-            --accent-purple: #6366F1;
-        }
-
-        @media (prefers-color-scheme: light) {
-            :root {
-                --bg-color: #F8FAFC;
-                --text-color: #475569;
-                --text-main: #0F172A;
-                --header-bg: #FFFFFF;
-                --card-bg: #FFFFFF;
-                --card-border: #E5E7EB;
-                --svg-stroke: #0F172A;
-                --svg-fill: #FFFFFF;
-                --nav-color: #64748B;
-                --accent-purple: #4F46E5;
-            }
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -49,9 +20,10 @@
             scroll-behavior: smooth;
         }
 
+        /* Намертво закрепляем красивый тёмный фон */
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color); 
+            background-color: #0B0F19;
+            color: #94A3B8; 
             font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
             font-weight: 400;
             min-height: 100vh;
@@ -64,8 +36,8 @@
             justify-content: space-between; 
             align-items: center; 
             padding: 15px 40px;
-            background-color: var(--header-bg); 
-            border-bottom: 1px solid var(--card-border); 
+            background-color: #111827; 
+            border-bottom: 1px solid #374151; 
             position: sticky; 
             top: 0; 
             z-index: 100; 
@@ -76,9 +48,9 @@
             width: auto; 
             display: block; 
         }
-        .logo-stroke { stroke: var(--svg-stroke); }
-        .logo-bg { fill: var(--svg-fill); }
-        .logo-text { fill: var(--svg-stroke); font-weight: 700; }
+        .logo-stroke { stroke: #F8FAFC; }
+        .logo-bg { fill: #0B0F19; }
+        .logo-text { fill: #F8FAFC; font-weight: 700; }
 
         nav {
             display: flex;
@@ -86,7 +58,7 @@
         }
 
         nav a { 
-            color: var(--nav-color); 
+            color: #94A3B8; 
             text-decoration: none; 
             font-weight: 600; 
             text-transform: uppercase; 
@@ -95,7 +67,7 @@
             transition: color 0.2s;
         }
         nav a:hover { 
-            color: var(--text-main); 
+            color: #F8FAFC; 
         }
 
         .main-hero { 
@@ -107,7 +79,7 @@
         .main-hero h1 { 
             font-size: 3.2rem; 
             font-weight: 700; 
-            color: var(--text-main); 
+            color: #F8FAFC; 
             margin-bottom: 20px; 
             letter-spacing: -1px;
         }
@@ -127,36 +99,37 @@
             width: 100%;
         }
 
-        /* Плотные и контрастные карточки. Никаких эффектов размытия. */
+        /* Тёмные контрастные карточки, которые никогда не побелеют */
         .card {
-            background-color: var(--card-bg); 
-            border: 1px solid var(--card-border); 
+            background-color: #1F2937; 
+            border: 1px solid #374151; 
             border-radius: 20px;
             padding: 30px; 
             transition: transform 0.2s ease, border-color 0.2s ease;
             display: flex; 
             flex-direction: column;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
 
         .card:hover { 
             transform: translateY(-4px); 
-            border-color: var(--accent-purple); 
+            border-color: #6366F1; 
         }
 
         .card h3 { 
             font-size: 1.4rem; 
             font-weight: 600; 
-            color: var(--text-main); 
+            color: #F8FAFC; 
             margin-bottom: 12px; 
         }
         .card p { 
-            color: var(--text-color); 
+            color: #94A3B8; 
             font-size: 0.95rem; 
             line-height: 1.6; 
             margin-bottom: 25px; 
         }
 
+        /* Статус-баджи */
         .status-badge { 
             display: inline-flex; 
             align-items: center; 
@@ -175,6 +148,7 @@
         .status-badge.online { background-color: rgba(16, 185, 129, 0.15); color: #10B981; }
         .status-badge.online .status-dot { background-color: #10B981; }
 
+        /* Кнопка */
         .tg-button {
             display: block; 
             text-align: center; 
@@ -190,6 +164,7 @@
         }
         .tg-button:hover { background-color: #1A84B8; }
 
+        /* Меню ссылок */
         .links-menu {
             display: flex;
             flex-direction: column;
@@ -201,7 +176,7 @@
         .link-item {
             display: flex;
             flex-direction: column;
-            border-bottom: 1px solid var(--card-border);
+            border-bottom: 1px solid #374151;
             padding-bottom: 10px;
         }
         .link-item:last-child {
@@ -223,7 +198,7 @@
 
         .link-desc {
             font-size: 0.8rem;
-            color: var(--text-color);
+            color: #94A3B8;
             margin-top: 4px;
         }
 
@@ -232,8 +207,8 @@
             text-align: center;
             padding: 30px;
             font-size: 0.85rem;
-            color: var(--nav-color);
-            border-top: 1px solid var(--card-border);
+            color: #64748B;
+            border-top: 1px solid #374151;
         }
 
         @media (max-width: 768px) {
@@ -287,4 +262,24 @@
 
             <!-- СЕКЦИЯ IOS & CYDIA -->
             <div class="card" id="cydia">
+                <div class="status-badge">
+                    <div class="status-dot"></div>Инструкции
+                </div>
+                <h3>iOS & Джейлбрейк</h3>
+                <p>Актуальные гайды по установке полупривязанного джейлбрейка, твиков из Cydia/Sileo и подписи IPA-файлов сторонних приложений.</p>
+                
+                <div class="links-menu">
+                    <div class="link-item">
+                        <a href="#" class="interactive-link">Твики для iOS 17 →</a>
+                        <div class="link-desc">Кастомизация Пункта управления и анимаций.</div>
+                    </div>
+                    <div class="link-item">
+                        <a href="#" class="interactive-link">Установка Сертификатов →</a>
+                        <div class="link-desc">Как ставить приложения без ПК через Scarlet/Esign.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- СЕКЦИЯ ANDROID -->
+            <div class="card" id="android">
                 <div class="status-badge">
