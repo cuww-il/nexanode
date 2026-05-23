@@ -17,29 +17,30 @@
             scroll-behavior: smooth;
         }
 
-        /* 🍏 СВЕТЛЫЙ ФОН ИЗ КЛАССИЧЕСКОЙ iOS (Текстурная подложка) */
+        /* ТЕКСТУРНЫЙ СВЕТЛЫЙ ФОН (Имитация льняной подложки iOS 6) */
         body {
-            background-color: #eef1f5;
-            background-image: linear-gradient(#dfa 0%, #eef1f5 100%);
-            background: radial-gradient(circle at 50% 50%, #f6f8fa 0%, #e4e8ec 100%);
-            background-attachment: fixed;
-            color: #333333; 
-            /* Тот самый шрифт из старых айфонов */
+            background-color: #cbd2da;
+            background-image: 
+                radial-gradient(#e1e7ed 20%, transparent 20%),
+                radial-gradient(#e1e7ed 20%, transparent 20%);
+            background-size: 6px 6px;
+            background-position: 0 0, 3px 3px;
+            color: #222222; 
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* 📎 СТЕКЛЯННАЯ ШАПКА С ОТБЛИСКОМ */
+        /* ГЛЯНЦЕВАЯ СТЕКЛЯННАЯ ШАПКА С ТЕНЬЮ */
         header {
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             padding: 12px 40px;
-            background: linear-gradient(to bottom, #ffffff 0%, #f1f3f6 50%, #e1e4e9 51%, #e8ecf1 100%);
-            border-bottom: 1px solid #b0b5bc; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(to bottom, #ffffff 0%, #f1f3f6 50%, #dfe2e7 51%, #e4e8ee 100%);
+            border-bottom: 1px solid #9ba0a6; 
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
             position: sticky; 
             top: 0; 
             z-index: 100; 
@@ -52,7 +53,7 @@
         }
         .logo-stroke { stroke: #222222; }
         .logo-bg { fill: #ffffff; }
-        .logo-text { fill: #222222; font-weight: bold; }
+        .logo-text { fill: #222222; font-weight: bold; text-shadow: 0 1px 0 #ffffff; }
 
         nav {
             display: flex;
@@ -67,7 +68,6 @@
             font-size: 0.8rem; 
             letter-spacing: 1px;
             text-shadow: 0 1px 0 #ffffff;
-            transition: color 0.2s;
         }
         nav a:hover { 
             color: #007aff; 
@@ -89,7 +89,7 @@
         .main-hero p { 
             font-size: 1.2rem; 
             line-height: 1.5;
-            color: #555555;
+            color: #444444;
             text-shadow: 0 1px 0 #ffffff;
         }
 
@@ -104,82 +104,85 @@
             align-items: start;
         }
 
-        /* ✨ ГЛЯНЦЕВЫЕ КАРТОЧКИ С ЖЁСТКИМИ БЛИКАМИ И ОБЪЁМОМ */
+        /* ОБЪЕМНЫЕ ВЫПУКЛЫЕ КАРТОЧКИ (Скевоморфизм) */
         .card {
             background: #ffffff;
-            /* Хитрый градиент, имитирующий отражение стекла */
+            /* Стеклянный перелив */
             background: linear-gradient(to bottom, 
-                rgba(255,255,255,1) 0%, 
-                rgba(255,255,255,0.9) 49%, 
-                rgba(240,242,245,0.9) 50%, 
-                rgba(245,247,250,1) 100%);
-            border: 1px solid #b8bfc7; 
-            border-top: 1px solid #e2e7ec;
+                #ffffff 0%, 
+                #f8f9fa 49%, 
+                #eceef1 50%, 
+                #f4f6f9 100%);
+            border: 1px solid #a3aab2; 
+            border-top: 1px solid #d2d7dc;
             border-radius: 16px;
             padding: 30px; 
             display: flex; 
             flex-direction: column;
             height: auto; 
             min-height: 380px; 
-            /* Объёмная тень вокруг блока */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            /* Жесткая тень объема снаружи и белый блик изнутри */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,1);
+            transition: transform 0.2s ease;
         }
 
         .card:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,1);
         }
 
         .card h3 { 
             font-size: 1.35rem; 
             font-weight: bold; 
-            color: #222222; 
+            color: #111111; 
             margin-bottom: 12px; 
             text-shadow: 0 1px 0 #ffffff;
         }
         .card p { 
-            color: #555555; 
+            color: #444444; 
             font-size: 0.95rem; 
             line-height: 1.5; 
             margin-bottom: 25px; 
+            text-shadow: 0 1px 0 #ffffff;
         }
 
-        /* 🟢 ОБЪЁМНЫЕ БАДЖИ С ГЛУБОКИМ ЦВЕТОМ */
+        /* РЕЛЬЕФНЫЕ СТАДЖ-БАДЖИ (iOS СТИЛЬ) */
         .status-badge { 
             display: inline-flex; 
             align-items: center; 
-            background: linear-gradient(to bottom, #ffaf4b 0%, #ff9500 100%);
             color: #ffffff; 
             font-size: 0.7rem; 
             font-weight: bold; 
-            padding: 4px 12px; 
+            padding: 5px 12px; 
             border-radius: 12px; 
-            margin-bottom: 15px; 
+            margin-bottom: 18px; 
             text-transform: uppercase; 
             align-self: flex-start; 
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-            text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+            border: 1px solid;
         }
-        .status-dot { width: 6px; height: 6px; background-color: #ffffff; border-radius: 50%; margin-right: 6px; }
+        .status-dot { width: 6px; height: 6px; background-color: #ffffff; border-radius: 50%; margin-right: 6px; box-shadow: 0 1px 0 rgba(0,0,0,0.2); }
         
+        /* Стабильно — Зеленый глянцевый */
         .status-badge.online { 
-            background: linear-gradient(to bottom, #73e795 0%, #4cd964 100%);
+            background: linear-gradient(to bottom, #7ceb9c 0%, #4cd964 50%, #2ecc71 100%);
+            border-color: #27ae60;
+        }
+        
+        /* В разработке — Оранжевый глянцевый */
+        .status-badge.progress { 
+            background: linear-gradient(to bottom, #ffb356 0%, #ff9500 50%, #e67e22 100%);
+            border-color: #d35400;
         }
 
-        /* 🔵 ЛЕГЕНДАРНАЯ ГЛЯНЦЕВАЯ КНОПКА С БЛИКОМ (Стиль Apple Скевоморфизм) */
+        /* ГЛЯНЦЕВАЯ ВЫПУКЛАЯ КНОПКА TELEGRAM С ОТБЛИСКОМ */
         .tg-button {
             display: block; 
             text-align: center; 
-            background: #24A1DE;
-            /* Сверхобъёмный двухслойный градиент с бликом по центру кнопки */
-            background: linear-gradient(to bottom, 
-                #5ac8fa 0%, 
-                #34aadc 49%, 
-                #007aff 50%, 
-                #0051a8 100%);
-            border: 1px solid #0051a8;
-            border-top: 1px solid #8cd6ff;
+            background: linear-gradient(to bottom, #5ac8fa 0%, #34aadc 49%, #007aff 50%, #0051a8 100%);
+            border: 1px solid #004b9b;
+            border-top: 1px solid #96deff;
             color: #FFFFFF; 
             text-decoration: none;
             padding: 12px 15px; 
@@ -187,15 +190,11 @@
             font-size: 0.9rem; 
             font-weight: bold; 
             margin-top: auto; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.4);
-            text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4);
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.5);
         }
         .tg-button:hover { 
-            filter: brightness(1.08);
-        }
-        .tg-button:active {
-            background: linear-gradient(to bottom, #0051a8 0%, #007aff 100%);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+            filter: brightness(1.05);
         }
 
         /* Списки ссылок */
@@ -210,7 +209,7 @@
         .link-item {
             display: flex;
             flex-direction: column;
-            border-bottom: 1px solid #d1d5db;
+            border-bottom: 1px solid #cbd5e1;
             padding-bottom: 10px;
         }
         .link-item:last-child {
@@ -223,6 +222,7 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 0.95rem;
+            text-shadow: 0 1px 0 #ffffff;
         }
 
         .interactive-link:hover {
@@ -231,8 +231,9 @@
 
         .link-desc {
             font-size: 0.8rem;
-            color: #666666;
+            color: #555555;
             margin-top: 4px;
+            text-shadow: 0 1px 0 #ffffff;
         }
 
         footer {
@@ -240,9 +241,10 @@
             text-align: center;
             padding: 30px;
             font-size: 0.85rem;
-            color: #666666;
-            border-top: 1px solid #cbd5e1;
+            color: #555555;
+            border-top: 1px solid #b8bfc7;
             text-shadow: 0 1px 0 #ffffff;
+            background: linear-gradient(to bottom, #dfe2e7 0%, #cbd2da 100%);
         }
 
         @media (max-width: 768px) {
@@ -283,5 +285,3 @@
             <p>Портал о кастомных прошивках, безопасном обходе ограничений, надежных прокси-серверах и полной кастомизации ваших мобильных устройств.</p>
         </section>
 
-        <section class="features-grid">
-            <!-- КАРТОЧКА ПРОКСИ -->
