@@ -11,34 +11,33 @@
 
     <style>
         :root {
-            /* Темная тема по умолчанию — имитация жидкого стекла через CSS Градиент */
-            --bg-color: #060913;
-            /* Плавный фон-подложка вместо тяжелых движущихся сфер */
-            --bg-gradient: radial-gradient(circle at 0% 0%, #1e1b4b 0%, #060913 50%), 
-                           radial-gradient(circle at 100% 100%, #0c4a6e 0%, #060913 100%);
+            /* Темная тема по умолчанию */
+            --bg-color: #0B0F19; 
             --text-color: #94A3B8;
             --text-main: #F8FAFC;
-            --header-bg: rgba(15, 23, 42, 0.8);
-            --card-bg: rgba(30, 41, 59, 0.5);
+            --header-bg: rgba(15, 23, 42, 0.7);
+            --card-bg: rgba(30, 41, 59, 0.45);
             --card-border: rgba(255, 255, 255, 0.08);
             --svg-stroke: #F8FAFC;
-            --svg-fill: #060913;
+            --svg-fill: #0B0F19;
             --nav-color: #94A3B8;
+            --glow-1: #1e1b4b;
+            --glow-2: #0c4a6e;
         }
 
         @media (prefers-color-scheme: light) {
             :root {
                 --bg-color: #F4F7FA;
-                --bg-gradient: radial-gradient(circle at 0% 0%, #e0e7ff 0%, #F4F7FA 60%), 
-                               radial-gradient(circle at 100% 100%, #e0f2fe 0%, #F4F7FA 100%);
                 --text-color: #475569;
                 --text-main: #0F172A;
-                --header-bg: rgba(255, 255, 255, 0.85);
-                --card-bg: rgba(255, 255, 255, 0.6);
-                --card-border: rgba(226, 232, 240, 0.9);
+                --header-bg: rgba(255, 255, 255, 0.7);
+                --card-bg: rgba(255, 255, 255, 0.5);
+                --card-border: rgba(226, 232, 240, 0.8);
                 --svg-stroke: #0F172A;
                 --svg-fill: #FFFFFF;
                 --nav-color: #64748B;
+                --glow-1: #e0e7ff;
+                --glow-2: #e0f2fe;
             }
         }
 
@@ -53,8 +52,11 @@
         }
 
         body {
-            background: var(--bg-gradient);
             background-color: var(--bg-color);
+            /* Статичные неоновые пятна на фоне — не грузят процессор и встройку */
+            background-image: 
+                radial-gradient(circle at -10% -10%, var(--glow-1) 0%, transparent 40%),
+                radial-gradient(circle at 110% 50%, var(--glow-2) 0%, transparent 40%);
             background-attachment: fixed;
             color: var(--text-color); 
             font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
@@ -70,6 +72,8 @@
             align-items: center; 
             padding: 15px 40px;
             background-color: var(--header-bg); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--card-border); 
             position: sticky; 
             top: 0; 
@@ -132,19 +136,28 @@
             width: 100%;
         }
 
-        /* Облегченный стеклянный эффект за счет полупрозрачного цвета без размытия */
+        /* Настоящий стеклянный эффект, оптимизированный под встроенную графику */
         .card {
             background-color: var(--card-bg); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--card-border); 
             border-radius: 24px;
             padding: 30px; 
             transition: transform 0.2s ease, border-color 0.2s ease;
             display: flex; 
             flex-direction: column;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        @media (prefers-color-scheme: light) {
+            .card {
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+            }
         }
 
         .card:hover { 
-            transform: translateY(-4px); 
+            transform: translateY(-5px); 
             border-color: rgba(99, 102, 241, 0.4); 
         }
 
@@ -164,8 +177,8 @@
         .status-badge { 
             display: inline-flex; 
             align-items: center; 
-            background-color: rgba(245, 158, 11, 0.1); 
-            color: #D97706; 
+            background-color: rgba(245, 158, 11, 0.15); 
+            color: #F59E0B; 
             font-size: 0.7rem; 
             font-weight: 600; 
             padding: 4px 12px; 
@@ -174,9 +187,9 @@
             text-transform: uppercase; 
             align-self: flex-start; 
         }
-        .status-dot { width: 6px; height: 6px; background-color: #D97706; border-radius: 50%; margin-right: 6px; }
+        .status-dot { width: 6px; height: 6px; background-color: #F59E0B; border-radius: 50%; margin-right: 6px; }
         
-        .status-badge.online { background-color: rgba(16, 185, 129, 0.1); color: #10B981; }
+        .status-badge.online { background-color: rgba(16, 185, 129, 0.15); color: #10B981; }
         .status-badge.online .status-dot { background-color: #10B981; }
 
         .tg-button {
@@ -190,6 +203,7 @@
             font-size: 0.85rem; 
             font-weight: 600; 
             margin-top: auto; 
+            box-shadow: 0 4px 12px rgba(36, 161, 222, 0.2);
             transition: opacity 0.2s;
         }
         .tg-button:hover { opacity: 0.9; }
@@ -275,10 +289,3 @@
 
     <main>
         <section class="main-hero">
-            <h1>Добро пожаловать в NexaNode</h1>
-            <p>Портал о кастомных прошивках, безопасном обходе ограничений, надежных прокси-серверах и полной кастомизации ваших мобильных устройств.</p>
-        </section>
-
-        <section class="features-grid">
-            <!-- СЕКЦИЯ ПРОКСИ -->
-            <div class="card" id="proxy">
