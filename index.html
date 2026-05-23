@@ -7,37 +7,35 @@
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Темная тема по умолчанию */
+            /* Переменные для темной темы по умолчанию */
             --bg-color: #0B0F19; 
             --text-color: #94A3B8;
             --text-main: #F8FAFC;
-            --header-bg: rgba(15, 23, 42, 0.7);
-            --card-bg: rgba(30, 41, 59, 0.45);
-            --card-border: rgba(255, 255, 255, 0.08);
+            --header-bg: #111827;
+            --card-bg: #1F2937;
+            --card-border: #374151;
             --svg-stroke: #F8FAFC;
             --svg-fill: #0B0F19;
             --nav-color: #94A3B8;
-            --glow-1: #1e1b4b;
-            --glow-2: #0c4a6e;
+            --accent-purple: #6366F1;
         }
 
         @media (prefers-color-scheme: light) {
             :root {
-                --bg-color: #F4F7FA;
+                --bg-color: #F8FAFC;
                 --text-color: #475569;
                 --text-main: #0F172A;
-                --header-bg: rgba(255, 255, 255, 0.7);
-                --card-bg: rgba(255, 255, 255, 0.5);
-                --card-border: rgba(226, 232, 240, 0.8);
+                --header-bg: #FFFFFF;
+                --card-bg: #FFFFFF;
+                --card-border: #E5E7EB;
                 --svg-stroke: #0F172A;
                 --svg-fill: #FFFFFF;
                 --nav-color: #64748B;
-                --glow-1: #e0e7ff;
-                --glow-2: #e0f2fe;
+                --accent-purple: #4F46E5;
             }
         }
 
@@ -53,11 +51,6 @@
 
         body {
             background-color: var(--bg-color);
-            /* Статичные неоновые пятна на фоне — не грузят процессор и встройку */
-            background-image: 
-                radial-gradient(circle at -10% -10%, var(--glow-1) 0%, transparent 40%),
-                radial-gradient(circle at 110% 50%, var(--glow-2) 0%, transparent 40%);
-            background-attachment: fixed;
             color: var(--text-color); 
             font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
             font-weight: 400;
@@ -72,8 +65,6 @@
             align-items: center; 
             padding: 15px 40px;
             background-color: var(--header-bg); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--card-border); 
             position: sticky; 
             top: 0; 
@@ -136,29 +127,21 @@
             width: 100%;
         }
 
-        /* Настоящий стеклянный эффект, оптимизированный под встроенную графику */
+        /* Плотные и контрастные карточки. Никаких эффектов размытия. */
         .card {
             background-color: var(--card-bg); 
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--card-border); 
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 30px; 
             transition: transform 0.2s ease, border-color 0.2s ease;
             display: flex; 
             flex-direction: column;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        @media (prefers-color-scheme: light) {
-            .card {
-                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-            }
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .card:hover { 
-            transform: translateY(-5px); 
-            border-color: rgba(99, 102, 241, 0.4); 
+            transform: translateY(-4px); 
+            border-color: var(--accent-purple); 
         }
 
         .card h3 { 
@@ -195,18 +178,17 @@
         .tg-button {
             display: block; 
             text-align: center; 
-            background: linear-gradient(135deg, #24A1DE 0%, #1a84b8 100%);
+            background-color: #24A1DE; 
             color: #FFFFFF; 
             text-decoration: none;
             padding: 12px 15px; 
-            border-radius: 14px; 
+            border-radius: 12px; 
             font-size: 0.85rem; 
             font-weight: 600; 
             margin-top: auto; 
-            box-shadow: 0 4px 12px rgba(36, 161, 222, 0.2);
-            transition: opacity 0.2s;
+            transition: background-color 0.2s;
         }
-        .tg-button:hover { opacity: 0.9; }
+        .tg-button:hover { background-color: #1A84B8; }
 
         .links-menu {
             display: flex;
@@ -232,12 +214,11 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.2s, padding-left 0.2s;
+            transition: color 0.2s;
         }
 
         .interactive-link:hover {
             color: #059669;
-            padding-left: 4px; 
         }
 
         .link-desc {
@@ -289,3 +270,21 @@
 
     <main>
         <section class="main-hero">
+            <h1>Добро пожаловать в NexaNode</h1>
+            <p>Портал о кастомных прошивках, безопасном обходе ограничений, надежных прокси-серверах и полной кастомизации ваших мобильных устройств.</p>
+        </section>
+
+        <section class="features-grid">
+            <!-- СЕКЦИЯ ПРОКСИ -->
+            <div class="card" id="proxy">
+                <div class="status-badge online">
+                    <div class="status-dot"></div>Стабильно
+                </div>
+                <h3>Быстрые Прокси</h3>
+                <p>Высокоскоростные приватные HTTP/S и Socks5 конфигурации для обхода ограничений и стабильной работы Telegram.</p>
+                <a href="https://t.me" target="_blank" class="tg-button">Подключить в Telegram</a>
+            </div>
+
+            <!-- СЕКЦИЯ IOS & CYDIA -->
+            <div class="card" id="cydia">
+                <div class="status-badge">
